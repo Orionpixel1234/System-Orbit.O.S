@@ -1,2 +1,3 @@
-# System-Orbit.O.S
-Orbit O.S System (Apps Filesystem O.S Game Engine Assemblers Compilers)
+## ORBIT O.S
+# Building Orbit O.S:
+RUN make

@@ -1,5 +1,5 @@
-[BITS 16]
-[ORG 0x7C00]
+[BITS 16] ;; REAL MODE
+[ORG 0x7C00] ;; BIOS BOOTLOADER
 
 main:
     HLT
