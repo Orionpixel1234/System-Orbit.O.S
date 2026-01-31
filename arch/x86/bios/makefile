@@ -24,11 +24,11 @@ $(BOOT2_O): $(BOOT_SRC) | $(BIN)
 	$(AS) -f elf $(BOOT2_SRC) -o $(BOOT2_O)
 
 $(BOOTC_O): $(BOOTC_SRC) | $(BIN)
-	$(CC) $(CFLAGS) -c $(BOOTC_SRC) -o $(BOOTC_O)
+	$(CC) $(CFLAGS) -I$(LIBK_INCLUDE) -c $(BOOTC_SRC) -o $(BOOTC_O)
 
 
-$(BOOT2_ELF): $(BOOT2_O) $(A20_O) $(GDT_O) $(PM_O) $(BOOTC_O) | $(ELF)
-	$(LD) -T $(LINKER_BOOT_SCRIPT) $(BOOT2_O) $(A20_O) $(GDT_O) $(PM_O) $(BOOTC_O) -o $(BOOT2_ELF)
+$(BOOT2_ELF): $(BOOT2_O) $(A20_O) $(GDT_O) $(PM_O) $(BOOTC_O) $(KPRINTF_O) | $(ELF)
+	$(LD) -T $(LINKER_BOOT_SCRIPT) $(BOOT2_O) $(A20_O) $(GDT_O) $(PM_O) $(BOOTC_O) $(KPRINTF_O) -o $(BOOT2_ELF)
 
 $(BOOT2_BIN): $(BOOT2_ELF) | $(BIN)
 	$(OBJCOPY) -O binary $(BOOT2_ELF) $(BOOT2_BIN)

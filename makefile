@@ -14,8 +14,6 @@ OBJCOPY = objcopy
 
 CFLAGS ?= -ffreestanding -fno-builtin -fno-stack-protector -fno-pie -fno-omit-frame-pointer -fno-asynchronous-unwind-tables -fno-exceptions -mno-red-zone -m32 -march=i386 -mtune=i386 -m32 -march=i386 -mtune=i386 -Wall -Wextra -Werror -O0 -g
 
-
-
 BOOT_BIN := $(BIN)/boot.bin
 BOOT2_O := $(BIN)/boot.o
 BOOT2_ELF := $(ELF)/boot.elf
@@ -24,9 +22,11 @@ A20_O := $(BIN)/a20.o
 GDT_O := $(BIN)/gdt.o
 PM_O := $(BIN)/pm.o
 BOOTC_O := $(BIN)/bootc.o
+KPRINTF_O := $(BIN)/kprintf.o
 BOOT_IMG := $(IMG)/boot.img
 
 include arch/makefile
+include libs/makefile
 
 $(BUILD):
 	mkdir $(BUILD)
