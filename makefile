@@ -22,7 +22,7 @@ A20_O := $(BIN)/a20.o
 GDT_O := $(BIN)/gdt.o
 PM_O := $(BIN)/pm.o
 BOOTC_O := $(BIN)/bootc.o
-KPRINTF_O := $(BIN)/kprintv.o
+KPRINTV_O := $(BIN)/kprintv.o
 BOOT_IMG := $(IMG)/boot.img
 
 include arch/makefile

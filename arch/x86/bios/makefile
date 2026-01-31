@@ -8,6 +8,8 @@ PM_SRC ?= $(BIOS_PATH)/pm.asm
 BOOTC_SRC ?= $(BIOS_PATH)/boot.c
 LINKER_BOOT_SCRIPT ?= $(BIOS_PATH)/linker.ld
 
+include libs/libk/makefile
+
 $(BOOT_BIN): $(BOOT_SRC) | $(BIN)
 	$(AS) -f bin $(BOOT_SRC) -o $(BOOT_BIN)
 
@@ -20,12 +22,11 @@ $(GDT_O): $(GDT_SRC) | $(BIN)
 $(PM_O): $(PM_SRC) | $(BIN)
 	$(AS) -f elf $(PM_SRC) -o $(PM_O)
 
-$(BOOT2_O): $(BOOT_SRC) | $(BIN)
+$(BOOT2_O): $(BOOT2_SRC) | $(BIN)
 	$(AS) -f elf $(BOOT2_SRC) -o $(BOOT2_O)
 
 $(BOOTC_O): $(BOOTC_SRC) | $(BIN)
 	$(CC) $(CFLAGS) -I$(LIBK_INCLUDE) -c $(BOOTC_SRC) -o $(BOOTC_O)
-
 
 $(BOOT2_ELF): $(BOOT2_O) $(A20_O) $(GDT_O) $(PM_O) $(BOOTC_O) $(KPRINTV_O) | $(ELF)
 	$(LD) -T $(LINKER_BOOT_SCRIPT) $(BOOT2_O) $(A20_O) $(GDT_O) $(PM_O) $(BOOTC_O) $(KPRINTV_O) -o $(BOOT2_ELF)

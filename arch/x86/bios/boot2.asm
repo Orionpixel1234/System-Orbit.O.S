@@ -1,5 +1,8 @@
 [BITS 16]
 ;; [ORG 0x7E00] RIP
+
+section .note.GNU-stack noalloc noexec nowrite progbits ;; TEMP FOR LD
+
 SECTION .text
 GLOBAL main
 EXTERN a20
