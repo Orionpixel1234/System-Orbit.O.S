@@ -1,0 +1,17 @@
+[BITS 32]
+
+EXTERN DATA_SEG
+EXTERN BMAIN
+GLOBAL PM
+
+PM:
+    CLI
+    MOV AX, DATA_SEG
+    MOV DS, AX
+    MOV ES, AX
+    MOV FS, AX
+    MOV GS, AX
+    MOV SS, AX
+    MOV ESP, 0x9C00
+    CALL BMAIN
+    JMP $
