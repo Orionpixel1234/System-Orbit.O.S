@@ -1,4 +1,4 @@
-#include <kprintf.h>
+#include <kprintv.h>
 
 static int cursor_row = 0;
 static int cursor_col = 0;

@@ -1,5 +1,5 @@
-#ifndef KPRINTF_H
-#define KPRINTF_H
+#ifndef KPRINTV_H
+#define KPRINTV_H
 
 #define VGA_ADDRESS 0xB8000
 #define VGA_WIDTH 80
