@@ -2,5 +2,5 @@
 
 void BMAIN(void)
 {
-    kprintv("TEST", 0x09);
+    kprintv("TEST\nTEST2", 0x09);
 }
